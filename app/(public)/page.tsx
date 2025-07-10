@@ -155,7 +155,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
-import { useWindowSize } from "@/hooks/use-window-size";
+import { useWindowSize } from "@/hooks/use-mobile/use-window-size";
 import Image from "next/image";
 import { BookOpenIcon, BookOpenTextIcon, CheckCircleIcon, BrainIcon } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
