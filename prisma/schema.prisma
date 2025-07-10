@@ -73,3 +73,5 @@ model Verification {
 
   @@map("verification")
 }
+
+
