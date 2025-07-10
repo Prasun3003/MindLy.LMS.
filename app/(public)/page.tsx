@@ -151,65 +151,44 @@
 
 'use client'
 
-import { ModeToggle } from "@/components/ui/mode-toggle";
-import { authClient } from "@/lib/auth-client";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { useWindowSize } from "@/hooks/use-window-size";
 import Image from "next/image";
-import { BookOpenIcon, BookOpenTextIcon } from "lucide-react"
-import { CheckCircleIcon, BrainIcon } from "lucide-react"
+import { BookOpenIcon, BookOpenTextIcon, CheckCircleIcon, BrainIcon } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const features = [
   {
     title: "Comprehensive Courses",
     description: "A wide range of courses to choose from curated by our team of experts",
-    icon: <BookOpenIcon />
+    icon: <BookOpenIcon className="w-6 h-6" />,
   },
   {
     title: "Personalized Learning",
     description: "Tailored content based on your learning style and pace",
-    icon: <BookOpenTextIcon />
+    icon: <BookOpenTextIcon className="w-6 h-6" />,
   },
   {
     title: "Progress Tracking",
     description: "Track your progress and see where you stand",
-    icon: < CheckCircleIcon />
+    icon: <CheckCircleIcon className="w-6 h-6" />,
   },
   {
-    title: " AI-Powered Learning",
-    description: "Track your progress and see where you stand",
-    icon: < BrainIcon />
+    title: "AI-Powered Learning",
+    description: "Smart recommendations powered by advanced AI models",
+    icon: <BrainIcon className="w-6 h-6" />,
   },
-]
+];
 
 export default function Home() {
-  const router = useRouter();
-
-  async function SignOut() {
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          toast.success("Signed out successfully");
-        },
-        onError: (error) => {
-          toast.error("Failed to sign out: " + error.error.message);
-        },
-      },
-    });
-    router.push("/login");
-  }
-
   const { width, height } = useWindowSize();
-
   return (
     <>
-      <section className="relative min-h-screen overflow-hidden py-24 px-6 md:px-12 flex items-center justify-center text-white bg-black">
+      {/* Hero Section */}
+      <section className="relative min-h-screen overflow-hidden py-24 px-6 md:px-12 flex items-center justify-center bg-background text-foreground">
         {/* Flickering Grid Background */}
         <FlickeringGrid
           className="fixed inset-0 z-0 w-full h-full"
@@ -222,16 +201,13 @@ export default function Home() {
           width={width}
         />
 
-        {/* Floating Toggle */}
-        <div className="absolute top-6 right-6 z-10">
-          <ModeToggle />
-        </div>
+        {/* Mode Toggle */}
 
-        {/* Hero Content */}
+        {/* Main Content */}
         <div className="relative z-10 w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Text Column */}
+          {/* Text */}
           <div className="text-center md:text-left space-y-6">
-            <Badge variant="outline" className="border-muted text-muted-foreground bg-muted/10">
+            <Badge variant="outline" className="border-muted text-muted-foreground bg-muted/10 border-width-2 border-white">
               The Future of Online Learning Education
             </Badge>
 
@@ -250,8 +226,7 @@ export default function Home() {
                 className={buttonVariants({
                   variant: "outline",
                   size: "lg",
-                  className:
-                    "hover:bg-blue-600 hover:text-white hover:scale-105 active:scale-95 transition-all",
+                  className: "hover:bg-primary hover:text-primary-foreground transition-all",
                 })}
               >
                 Explore Courses
@@ -262,8 +237,7 @@ export default function Home() {
                 className={buttonVariants({
                   variant: "default",
                   size: "lg",
-                  className:
-                    "bg-blue-600 text-black hover:scale-105 active:scale-95 transition-all",
+                  className: "hover:scale-105 active:scale-95 transition-all",
                 })}
               >
                 Login
@@ -271,7 +245,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Illustration Column */}
+          {/* Illustration */}
           <div className="flex justify-center">
             <Image
               src="/undraw_development_s4gv.svg"
@@ -284,8 +258,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* Features Section */}
-      <section className="bg-transparent py-20 px-6 md:px-12">
+      <section className="bg-background py-20 px-6 md:px-12 text-foreground">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Why Choose Us?
@@ -295,12 +270,10 @@ export default function Home() {
             {features.map((feature) => (
               <Card
                 key={feature.title}
-                className="hover:shadow-xl transition-shadow duration-300 border border-border"
+                className="hover:shadow-xl transition-shadow duration-300 border border-border bg-muted/20"
               >
                 <CardHeader className="flex items-center justify-center text-primary">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    {feature.icon}
-                  </div>
+                  <div className="bg-primary/10 p-3 rounded-full">{feature.icon}</div>
                 </CardHeader>
                 <CardContent className="text-center space-y-2">
                   <CardTitle>{feature.title}</CardTitle>

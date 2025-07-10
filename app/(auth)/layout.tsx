@@ -100,7 +100,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
 
           <div className="mb-10 text-2xl font-bold flex flex-row items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
-          <ComputerIcon />
+          <Image src="/undraw_command-line.svg" alt="Logo" width={24} height={24} className="w-6 h-6 bg-orange-500 p-1 rounded-full" />
             MindLy.LMS.
           </Link>
           </div>
