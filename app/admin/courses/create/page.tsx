@@ -19,6 +19,7 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select"
+  import { RichTextEditor } from "@/components/rich-text-editor/Editor"
   
 import { category } from "@/lib/zodSchemas"
 import { courseLevel } from "@/lib/zodSchemas"
@@ -112,7 +113,7 @@ export default function CreateCoursePage() {
                                     <FormItem className="w-full min-h-[200px]">
                                         <FormLabel>Description</FormLabel>
                                         <FormControl>
-                                            <Textarea placeholder="write a description" {...field} />
+                                            <RichTextEditor field={field} />
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>
