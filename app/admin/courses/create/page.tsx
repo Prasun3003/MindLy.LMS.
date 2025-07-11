@@ -24,6 +24,7 @@ import {
 import { category } from "@/lib/zodSchemas"
 import { courseLevel } from "@/lib/zodSchemas"
 import { courseStatus } from "@/lib/zodSchemas"
+import { Uploader } from "@/components/file-uploader/Uploader"
 
 export default function CreateCoursePage() {
     const form = useForm<CreateCourseSchema>({
@@ -127,7 +128,7 @@ export default function CreateCoursePage() {
                                     <FormItem>
                                         <FormLabel>Thumbnail Image</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="e.g. thumbnail.jpg" {...field} />
+                                            <Uploader />
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>
